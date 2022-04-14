@@ -11,12 +11,6 @@ would like to develop for your sorting algorithms can go. Below, I have already 
 examples of how similar test cases may look. NOTE: un-comment out "if __name__  == '__main__'"
 in order for the test case suite to run.
 
-
-
-
-
-
-
 '''
 import unittest
 import time
