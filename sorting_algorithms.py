@@ -249,9 +249,179 @@ def generateLists(length):
     randomList = [random.randrange(1, 100) for i in range(length)]
     return(randomList)
 
+#CREATE A CLASS CALLED Runtimes()
+
+def bubbleSortTimes():
+
+    run_times = []
+
+    list_of_10 = generateLists(10)
+    list_of_100 = generateLists(100)
+    list_of_1000 = generateLists(1000)
+    list_of_5000 = generateLists(5000)
+    list_of_10000 = generateLists(10000)
+    list_of_15000 = generateLists(15000)
+    list_of_20000 = generateLists(20000)
+    list_of_25000 = generateLists(25000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_10)
+    tock = time.process_time()
+
+    run_time_10 = tock - tic
+    run_times.append(run_time_10)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_100)
+    tock = time.process_time()
+
+    run_time_100 = tock - tic
+    run_times.append(run_time_100)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_1000)
+    tock = time.process_time()
+
+    run_time_1000 = tock - tic
+    run_times.append(run_time_1000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_5000)
+    tock = time.process_time()
+
+    run_time_5000 = tock - tic
+    run_times.append(run_time_5000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_10000)
+    tock = time.process_time()
+
+    run_time_10000 = tock - tic
+    run_times.append(run_time_10000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_15000)
+    tock = time.process_time()
+
+    run_time_15000 = tock - tic
+    run_times.append(run_time_15000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_20000)
+    tock = time.process_time()
+
+    run_time_20000 = tock - tic
+    run_times.append(run_time_20000)
+
+    tic = time.process_time()
+    SortingAlgorithms.bubbleSort(list_of_25000)
+    tock = time.process_time()
+
+    run_time_25000 = tock - tic
+    run_times.append(run_time_25000)
+
+    return run_times
+    #print(run_times)
+
+def selectionSortTimes():
+
+    run_times = []
+
+    list_of_10 = generateLists(10)
+    list_of_20 = generateLists(20)
+    list_of_30 = generateLists(30)
+    list_of_40 = generateLists(40)
+    list_of_50 = generateLists(50)
+    list_of_60 = generateLists(60)
+    list_of_70 = generateLists(70)
+    list_of_80 = generateLists(80)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_10)
+    tock = time.process_time()
+
+    run_time_10 = tock - tic
+    run_times.append(run_time_10)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_20)
+    tock = time.process_time()
+
+    run_time_20 = tock - tic
+    run_times.append(run_time_20)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_30)
+    tock = time.process_time()
+
+    run_time_30 = tock - tic
+    run_times.append(run_time_30)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_40)
+    tock = time.process_time()
+
+    run_time_40 = tock - tic
+    run_times.append(run_time_40)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_50)
+    tock = time.process_time()
+
+    run_time_50 = tock - tic
+    run_times.append(run_time_50)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_60)
+    tock = time.process_time()
+
+    run_time_60 = tock - tic
+    run_times.append(run_time_60)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_70)
+    tock = time.process_time()
+
+    run_time_70 = tock - tic
+    run_times.append(run_time_70)
+
+    tic = time.process_time()
+    SortingAlgorithms.selectionSort(list_of_80)
+    tock = time.process_time()
+
+    run_time_80 = tock - tic
+    run_times.append(run_time_80)
+
+    return run_times
+    #print(run_times)
+
+
+
 def main():
 
-    print('Hello World')
+    run_times1 = bubbleSortTimes()
+    print(run_times1)
+
+    list_lengths = [10, 100, 1000, 5000, 10000, 15000, 20000, 25000]
+    bubbleSortDF = pd.DataFrame(list(zip(list_lengths, run_times1)), columns=['List Size', 'Time'])
+    print(bubbleSortDF)
+
+    bubbleSortPlot = sns.lmplot(x = 'List Size', y = 'Time', data = bubbleSortDF)
+    bubbleSortPlot
+
+    plt.show()
+
+    run_times2 = selectionSortTimes()
+    print(run_times2)
+
+    list_lengths2 = [10, 20, 30, 40, 50, 60, 70, 80]
+    selectionSortDF = pd.DataFrame(list(zip(list_lengths2, run_times2)), columns=['List Size', 'Time'])
+    print(selectionSortDF)
+
+    selectionSortPlot = sns.lmplot(x = 'List Size', y = 'Time', data = selectionSortDF)
+    selectionSortPlot
+
+    plt.show()
 
 main()
 
