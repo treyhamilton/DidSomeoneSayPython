@@ -244,6 +244,10 @@ class SortTesting(unittest.TestCase):
 # if __name__ == '__main__':
 #     unittest.main()
 
+def generateLists(length):
+
+    randomList = [random.randrange(1, 100) for i in range(length)]
+    return(randomList)
 
 def main():
 
